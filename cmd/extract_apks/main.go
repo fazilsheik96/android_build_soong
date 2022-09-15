@@ -76,7 +76,7 @@ func (apkSet *ApkSet) getToc() (Toc, error) {
 		return nil, err
 	}
 	bytes := make([]byte, tocFile.FileHeader.UncompressedSize64)
-	if _, err := rc.Read(bytes); err != io.EOF {
+	if _, err := rc.Read(bytes); err != nil && err != io.EOF {
 		return nil, err
 	}
 	rc.Close()
